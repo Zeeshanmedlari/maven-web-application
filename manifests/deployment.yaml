@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mavenWeb
+  labels:
+    app: mavenWeb
+  namespace: mavenwebapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mavenWeb
+  template:
+    metadata:
+      labels:
+        app: mavenWeb
+    spec:
+      containers:
+        - name: mavenWeb
+          image: mavenWeb.azurecr.io/mavenwebimage:latest
+          ports:
+            - containerPort: 8080
